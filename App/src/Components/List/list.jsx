@@ -25,8 +25,9 @@ export default function List() {
       <h1 className='col-10 mx-auto'>Posts</h1>
       <main className="col-10 mx-auto">
       <ul>
-        <Link to='post'>
+       
           {state.posts.map(post => (
+            <Link to={`post/${post.id}`}>
             <li onClick={() => { handleLiClick(post.id, post.body, post.title, post.userId)}} key={post.id}>
               <CardComponent 
               title={post.title}
@@ -35,8 +36,8 @@ export default function List() {
               className={'mt-3'}
               />
             </li>
+            </Link>
           ))}
-        </Link>
         </ul>
       </main>
     </>

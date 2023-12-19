@@ -2,11 +2,12 @@ import { useContext, useState } from "react";
 import { TodoContext } from "../../StateManagement/context";
 import Swal from 'sweetalert2';
 import FormComponent from "./formComponent/formcomponent";
+import { useNavigate } from 'react-router-dom';
 
-
-export default function Form({ submit }) {
+export default function Form() {
     const { addPost } = useContext(TodoContext);
     const [validation, setValidation] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e, postId, userId) => {
         e.preventDefault();
@@ -32,7 +33,7 @@ export default function Form({ submit }) {
                     if (result.isConfirmed) {
                         e.target[0].value = '';
                         e.target[1].value = '';
-                        submit();
+                       navigate('/')
                     }
                 });
             } catch (error) {
