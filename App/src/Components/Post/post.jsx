@@ -3,8 +3,7 @@ import { TodoContext } from '../../StateManagement/context';
 import Swal from 'sweetalert2';
 import CardComponent from '../Card/card';
 import AccordionComponent from '../Accordion/accordion';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 
 export default function Post() {
@@ -12,6 +11,7 @@ export default function Post() {
   const postData = JSON.parse(localStorage.getItem('post'));
   const user = state.users.find((user) => user.id === postData.userId);
   const navigate = useNavigate();
+  const { id } = useParams(postData.id)
 
   const handleDelete = (postId) => {
     Swal.fire({

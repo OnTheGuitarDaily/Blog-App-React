@@ -23,7 +23,7 @@ const router = createBrowserRouter(
             <Route index element={<List/>}/>
             <Route path='create' element={<Form/>}/>
             <Route path='post/:id' element={<PostLayout />}>
-                <Route path='' element={<Post/>}/>
+                <Route index element={<Post/>}/>
                 <Route path='edit' element={<PostEdit/>}/>
             </Route>
             <Route path='*' element={<Error/>}/>
