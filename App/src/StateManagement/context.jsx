@@ -2,19 +2,26 @@ import { createContext, useReducer, useEffect } from "react";
 import reducer, { ACTIONS } from "./reducer";
 import { fetchData, postData, deleteData, putData } from "../API/Services/ApiServices.js";
 
+
+const initialData = {
+  posts: [], 
+  users: [],
+  comments: []  
+}
+
 export const TodoContext = createContext();
 
 export default function PostProvider({ children }) {
-  const [state, dispatch] = useReducer(reducer, { posts: [], users: [], comments: []  });
+  const [state, dispatch] = useReducer(reducer, initialData);
 
   useEffect(() => {
     const fetchInitialData = async () => {
         try {
-          const initialData = await fetchData('./posts')
+          const postData = await fetchData('./posts')
           const usersData = await fetchData('./users');
           dispatch({ 
             type: ACTIONS.SET_POSTS, 
-            payload: initialData });
+            payload: postData });
           dispatch({ 
               type: ACTIONS.SET_USERS, 
               payload: usersData 

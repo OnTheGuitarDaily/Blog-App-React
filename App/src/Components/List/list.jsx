@@ -1,11 +1,17 @@
-import { useContext } from "react";
-import { TodoContext } from "../../StateManagement/context";
+import { useEffect } from "react";
 import CardComponent from '../Card/card';
 import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchPostsAsync } from "../../Features/Blog/BlogReducer";
 
 export default function List() {
-  const { state } = useContext(TodoContext);
   const { id } = useParams()
+  const dispatch = useDispatch()
+  const blog = useSelector((state) => state.blog)
+
+  useEffect(() => {
+    dispatch(fetchPostsAsync())
+  },[])
 
   const handleLiClick = (postId, postBody, postTitle, postUserId) => {
     localStorage.setItem('post', JSON.stringify(
@@ -18,16 +24,13 @@ export default function List() {
     ));
   };
 
-
-
-
   return (
     <>
       <h1 className='col-10 mx-auto'>Posts</h1>
       <main className="col-10 mx-auto">
       <ul>
        
-          {state.posts.map(post => (
+          {blog.posts.map(post => (
             <Link to={`post/:${post.id}`}>
             <li onClick={() => { handleLiClick(post.id, post.body, post.title, post.userId)}} key={post.id}>
               <CardComponent 
