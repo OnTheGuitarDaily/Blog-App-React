@@ -1,11 +1,12 @@
-import { useContext, useState } from "react";
-import { TodoContext } from "../../StateManagement/context";
+import { useDispatch } from 'react-redux';
+import { addDataAsync , fetchPostsAsync } from '../../Actions/Actions'
 import Swal from 'sweetalert2';
 import FormComponent from "./formComponent/formcomponent";
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function Form() {
-    const { addPost } = useContext(TodoContext);
+    const dispatch = useDispatch();
     const [validation, setValidation] = useState(false);
     const navigate = useNavigate();
 
@@ -23,8 +24,7 @@ export default function Form() {
                         Swal.showLoading();
                     },
                 });
-                await addPost(postBody, postTitle, postId, userId);
-
+                dispatch(addDataAsync(postId, postBody, postTitle, userId))
                 Swal.fire({
                     title: "Posted",
                     text: "Your post was successfully added",

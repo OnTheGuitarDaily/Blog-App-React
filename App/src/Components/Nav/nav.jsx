@@ -6,7 +6,9 @@ import { NavLink } from 'react-router-dom';
 function Nav() {
   return (
    <nav className="d-flex justify-content-between align-items-center mb-3 p-2 Nav">
-    <h1>Blog-Post</h1>
+    <NavLink to = '/'>
+    <h1 className='NameLink'>Blog-Post</h1>
+    </NavLink>
     <div className='d-flex gap-4'>
       <NavLink to = '/'>
           <IconButton>

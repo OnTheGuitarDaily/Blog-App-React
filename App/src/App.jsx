@@ -8,12 +8,13 @@ import RootLayout from './Components/layouts/RootLayouts'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 import List from './Components/List/list';
-import PostProvider from "./StateManagement/context";
 import Post from './Components/Post/post';
 import Form from './Components/Form/form';
 import Error from './Components/Error/Error';
 import PostLayout from './Components/layouts/PostLayout';
 import PostEdit from './Components/Post/postEdit';
+import store from './app/Store.js'
+import { Provider } from 'react-redux'
 
 
 const router = createBrowserRouter(
@@ -35,9 +36,9 @@ const router = createBrowserRouter(
 export default function App(){
     return (
     <>
-    <PostProvider>
+    <Provider store={store}>
         <RouterProvider router={router}/>
-    </PostProvider>
+    </Provider>
     </>
 )
 }

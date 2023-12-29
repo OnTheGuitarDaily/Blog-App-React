@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import blogReducer, { fetchPostsAsync, fetchUsersAsync} from '../Features/Blog/BlogReducer';
+import blogReducer from '../Features/Blog/BlogReducer';
 
 
 const store = configureStore({

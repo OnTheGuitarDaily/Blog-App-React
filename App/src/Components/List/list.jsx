@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import CardComponent from '../Card/card';
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchPostsAsync } from "../../Features/Blog/BlogReducer";
+import { fetchPostsAsync } from "../../Actions/Actions";
 
 export default function List() {
   const { id } = useParams()
@@ -13,16 +13,20 @@ export default function List() {
     dispatch(fetchPostsAsync())
   },[])
 
-  const handleLiClick = (postId, postBody, postTitle, postUserId) => {
+  const handleLiClick = (postId, postBody, postTitle, userId) => {
     localStorage.setItem('post', JSON.stringify(
       {
         id: postId,
         body: postBody,
         title: postTitle,
-        userId: postUserId
+        userId: userId
       }
     ));
   };
+
+  if (!blog || blog.posts.length === 0 ) {
+    return <div className='col-12 text-center mt-5 pt-5 loading'>Loading...</div>
+  }
 
   return (
     <>

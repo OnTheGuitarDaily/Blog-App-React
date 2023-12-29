@@ -29,3 +29,10 @@ a{
     border-radius: 10px;
     width: 100px;
 }
+
+.loading{
+    font-size: 30px;
+}
+.NameLink{
+    color: white;
+}
