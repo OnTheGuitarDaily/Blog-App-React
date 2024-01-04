@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPostsAsync,fetchCommentsAsync, fetchUsersAsync, deleteDataAsync, editDataAsync, addDataAsync} from '../../Actions/Actions'
+import { fetchPostsAsync, fetchCommentsAsync, fetchUsersAsync, deleteDataAsync, editDataAsync, addDataAsync} from '../../Actions/Actions'
 const initialState = {
   posts: [],
   users: [],

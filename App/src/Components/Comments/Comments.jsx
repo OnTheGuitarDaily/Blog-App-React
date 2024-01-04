@@ -24,10 +24,9 @@ export default function Comments(){
         <h1 className="mx-3">Comments</h1>
           {comments.map((comment) => 
             (
-              <div className='my-4 mx-auto col-10 d-flex flex-column'>
+              <div key={comment.id} className='my-4 mx-auto col-10 d-flex flex-column'>
                 <CardComponent 
                 className={'col-12'}
-                key = {comment.id}
                 title= {comment.name}
                 body= {comment.body}
                 />

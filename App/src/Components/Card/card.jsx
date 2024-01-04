@@ -1,9 +1,9 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
-export default function CardComponent({key, title, body, id, className}){
+export default function CardComponent({ title, body, id, className}){
     return(<>
-        <Card key={key} className={className}>
+        <Card className={className}>
                 <CardContent>
                   <h5>{title}</h5>
                   <p>{body}</p>

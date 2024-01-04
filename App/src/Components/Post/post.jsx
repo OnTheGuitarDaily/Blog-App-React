@@ -61,7 +61,6 @@ export default function Post() {
         title={postData.title}
         body={postData.body}
         id={postData.id}
-        key={postData.id}
       />
       <section className='d-flex mx-3 gap-4 align-self-start'>
         <button 
