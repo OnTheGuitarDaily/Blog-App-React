@@ -4,6 +4,7 @@ export const fetchData = async (endpoint) => {
   try {
     const response = await apiService.get(endpoint);
     const data = response.data;
+    console.log(response)
     return data
   } catch (error) {
     console.error('Error fetching data:', error);
